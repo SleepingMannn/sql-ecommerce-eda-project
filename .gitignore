@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.mdf
+*.ldf
+*.env
+.vscode/
+.idea/
+
+# Dataset files are not stored in the repository
+datasets/*.csv
