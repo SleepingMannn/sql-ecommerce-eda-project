@@ -31,7 +31,6 @@ The same style (`snake_case`) is used as in my Data Warehouse project, adapted t
 - Schema: `bronze`.
 - Table name: `<source>_<entity>`, taken from the CSV file name without the `_dataset` suffix.
 - Data is stored as in the source, without changes. Column names stay as in the CSV.
-- All columns are stored as text (`NVARCHAR`) exactly as loaded; data types are set in the Silver layer.
 
 | CSV file | Bronze table |
 |----------|--------------|
