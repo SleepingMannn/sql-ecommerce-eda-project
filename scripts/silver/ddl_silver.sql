@@ -92,7 +92,7 @@ CREATE TABLE silver.olist_orders (
 	order_approved_at             DATETIME2,
 	order_delivered_carrier_date  DATETIME2,
 	order_delivered_customer_date DATETIME2,
-	order_estimated_delivery_date DATETIME2
+	order_estimated_delivery_date DATE
 );
 GO
 
