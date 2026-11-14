@@ -260,9 +260,17 @@ FROM bronze.olist_sellers;
 TRUNCATE TABLE silver.product_category_name_translation;
 
 INSERT INTO silver.product_category_name_translation (
-	product_category_name,
+	product_category_name, 
 	product_category_name_english)
-SELECT
-	product_category_name,
+SELECT 
+	product_category_name, 
 	product_category_name_english
 FROM bronze.product_category_name_translation;
+
+-- Two categories missing in the source translation file (added manually)
+INSERT INTO silver.product_category_name_translation (
+	product_category_name, 
+	product_category_name_english)
+VALUES
+    ('portateis_cozinha_e_preparadores_de_alimentos', 'portable_kitchen_food_preparers')
+    , ('pc_gamer', 'pc_gamer');
