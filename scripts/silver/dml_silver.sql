@@ -101,7 +101,7 @@ SELECT
 		WHEN 'SP' THEN 'São Paulo'
 		WHEN 'TO' THEN 'Tocantins'
 		ELSE 'n/a'
-	END AS customer_state
+	END AS geolocation_state
 FROM bronze.olist_geolocation;
 
 -- #3 olist_order_items_dataset
