@@ -41,7 +41,7 @@ GO
 CREATE VIEW gold.dim_products AS
 SELECT
 	p.product_id,
-	COALESCE(t.product_category_name_english, 'unknown') AS product_category_name_english,
+	COALESCE(t.product_category_name_english, 'n/a') AS product_category_name_english,
 	p.product_weight_g,
 	p.product_length_cm,
 	p.product_height_cm,
@@ -90,10 +90,10 @@ SELECT
 	o.order_delivered_customer_date,
 	o.order_estimated_delivery_date,
 	CASE 
-		WHEN order_status = 'delivered' THEN DATEDIFF(day, o.order_purchase_timestamp, o.order_delivered_customer_date) 
+		WHEN o.order_status = 'delivered' THEN DATEDIFF(day, o.order_purchase_timestamp, o.order_delivered_customer_date) 
 	END AS delivery_days,
 	CASE 
-		WHEN order_status = 'delivered' THEN DATEDIFF(day, o.order_estimated_delivery_date, o.order_delivered_customer_date) 
+		WHEN o.order_status = 'delivered' THEN DATEDIFF(day, o.order_estimated_delivery_date, o.order_delivered_customer_date) 
 	END AS delivery_delay_days, -- A positive value indicates a delay; a negative value indicates early delivery.
 	i.total_items,
 	i.total_price,
