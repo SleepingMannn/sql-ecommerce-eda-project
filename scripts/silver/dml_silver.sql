@@ -5,7 +5,7 @@ Script: Load Silver Layer (Bronze → Silver)
 ...
 ===============================================================================
 */
-USE OlistEcommerce;   -- change to the actual database name
+USE olist_ecommerce;   -- change to the actual database name
 GO
 
 PRINT '==================================================================';
