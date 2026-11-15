@@ -4,19 +4,19 @@
 USE master;
 GO
 
--- Drop and rebuilt the 'OlistEcommerce' database
-IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'OlistEcommerce')
+-- Drop and rebuild the 'olist_ecommerce' database
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'olist_ecommerce')
 BEGIN
-    ALTER DATABASE OlistEcommerce SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE OlistEcommerce;
+    ALTER DATABASE olist_ecommerce SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE olist_ecommerce;
 END;
 GO
 
--- Create the 'OlistEcommerce' database
-CREATE DATABASE OlistEcommerce;
+-- Create the 'olist_ecommerce' database
+CREATE DATABASE olist_ecommerce;
 GO
 
-USE OlistEcommerce;
+USE olist_ecommerce;
 GO
 
 -- Create Schemas
