@@ -49,8 +49,7 @@ The same style (`snake_case`) is used as in my Data Warehouse project, adapted t
 - Schema: `silver`.
 - Table names are the same as in bronze (`silver.olist_orders`). The schema shows the layer.
 - Column names stay the same as in the source, except for:
-  - spelling mistakes in the source (`product_name_lenght` → `product_name_length`, `product_description_lenght` → `product_description_length`);
-  - new (derived) columns, which get descriptive `snake_case` names, with the unit in the name where useful (`delivery_days`, `order_month`).
+  - spelling mistakes in the source (`product_name_lenght` → `product_name_length`, `product_description_lenght` → `product_description_length`).
 
 ### Gold Layer
 
@@ -64,4 +63,5 @@ The same style (`snake_case`) is used as in my Data Warehouse project, adapted t
 | `report_` | Aggregated view for a business question | `gold.report_sales_by_month` |
 
 - Format: `<prefix>_<entity>`, entity name in plural for dimensions (`dim_products`), descriptive for reports.
+- New (derived) columns, which get descriptive `snake_case` names, with the unit in the name where useful (`delivery_days`).
 - The final list of gold views is defined after data profiling and is documented in the data catalog.
