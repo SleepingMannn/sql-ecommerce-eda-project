@@ -1,5 +1,5 @@
 --============================================================
--- DDL Script: Create Bronze Tables
+-- DDL Script: Create Silver Tables
 --============================================================
 
 USE OlistEcommerce; -- change to the actual database name
