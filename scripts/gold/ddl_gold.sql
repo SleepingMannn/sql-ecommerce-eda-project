@@ -41,7 +41,7 @@ GO
 CREATE VIEW gold.dim_products AS
 SELECT
 	p.product_id,
-	COALESCE(t.product_category_name_english, 'n/a') AS product_category_name_english,
+	COALESCE(t.product_category_name_english, 'unknown') AS product_category_name_english,
 	p.product_weight_g,
 	p.product_length_cm,
 	p.product_height_cm,
