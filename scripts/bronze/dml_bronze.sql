@@ -40,7 +40,7 @@ FROM 'C:\sql\Brazilian-E-Commerce\olist_customers_dataset.csv'
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a',   -- default row terminator (CR + LF)
+    ROWTERMINATOR = '0x0a', 
     CODEPAGE = '65001',
     TABLOCK
 );
@@ -53,7 +53,7 @@ FROM 'C:\sql\Brazilian-E-Commerce\olist_geolocation_dataset.csv'
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a',   -- default row terminator (CR + LF)
+    ROWTERMINATOR = '0x0a',
     CODEPAGE = '65001',
     TABLOCK
 );
@@ -66,7 +66,7 @@ FROM 'C:\sql\Brazilian-E-Commerce\olist_order_items_dataset.csv'
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a',   -- default row terminator (CR + LF)
+    ROWTERMINATOR = '0x0a',
     CODEPAGE = '65001',
     TABLOCK
 );
@@ -79,7 +79,7 @@ FROM 'C:\sql\Brazilian-E-Commerce\olist_order_payments_dataset.csv'
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a',   -- default row terminator (CR + LF)
+    ROWTERMINATOR = '0x0a',
     CODEPAGE = '65001',
     TABLOCK
 );
@@ -104,7 +104,7 @@ FROM 'C:\sql\Brazilian-E-Commerce\olist_orders_dataset.csv'
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a',   -- default row terminator (CR + LF)
+    ROWTERMINATOR = '0x0a',
     CODEPAGE = '65001',
     TABLOCK
 );
@@ -117,7 +117,7 @@ FROM 'C:\sql\Brazilian-E-Commerce\olist_products_dataset.csv'
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a',   -- default row terminator (CR + LF)
+    ROWTERMINATOR = '0x0a',
     CODEPAGE = '65001',
     TABLOCK
 );
@@ -130,7 +130,7 @@ FROM 'C:\sql\Brazilian-E-Commerce\olist_sellers_dataset.csv'
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a',   -- default row terminator (CR + LF)
+    ROWTERMINATOR = '0x0a',
     CODEPAGE = '65001',
     TABLOCK
 );
@@ -143,7 +143,7 @@ FROM 'C:\sql\Brazilian-E-Commerce\product_category_name_translation.csv'
 WITH (
     FORMAT = 'CSV',
     FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a',   -- default row terminator (CR + LF)
+    ROWTERMINATOR = '0x0a',
     CODEPAGE = '65001',
     TABLOCK
 );
