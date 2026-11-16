@@ -4,6 +4,9 @@ DDL Script: Create Gold Views
 ===============================================================================
 */
 
+USE olist_ecommerce;
+GO
+
 -- gold.dim_customers where granularity 1 row = 1 customer_id, always unique (customer_unique_id for multiple purchases of one client)
 IF OBJECT_ID('gold.dim_customers', 'V') IS NOT NULL
     DROP VIEW gold.dim_customers;
