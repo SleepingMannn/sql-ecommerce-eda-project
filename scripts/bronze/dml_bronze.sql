@@ -7,6 +7,10 @@ Script: Load Bronze Layer (Source → Bronze)
 WARNING:
     TRUNCATE removes all rows from the Bronze tables before loading.
 
+NOTE:
+    The BULK INSERT paths point to 'C:\sql\Brazilian-E-Commerce\olist_order_items_dataset\'.
+    Change them to the folder where you saved the datasets.
+
 BULK INSERT options used:
     FORMAT = 'CSV'         Reads the file as CSV: handles quoted values, commas
                            and line breaks inside quotes.
