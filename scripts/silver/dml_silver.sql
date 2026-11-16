@@ -54,7 +54,7 @@ SELECT
 		WHEN 'SE' THEN 'Sergipe'
 		WHEN 'SP' THEN 'São Paulo'
 		WHEN 'TO' THEN 'Tocantins'
-		ELSE 'n/a'
+		ELSE 'unknown'
 	END AS customer_state
 FROM bronze.olist_customers;
 
@@ -100,7 +100,7 @@ SELECT
 		WHEN 'SE' THEN 'Sergipe'
 		WHEN 'SP' THEN 'São Paulo'
 		WHEN 'TO' THEN 'Tocantins'
-		ELSE 'n/a'
+		ELSE 'unknown'
 	END AS geolocation_state
 FROM bronze.olist_geolocation;
 
@@ -252,7 +252,7 @@ SELECT
 		WHEN 'SE' THEN 'Sergipe'
 		WHEN 'SP' THEN 'São Paulo'
 		WHEN 'TO' THEN 'Tocantins'
-		ELSE 'n/a'
+		ELSE 'unknown'
 	END AS seller_state
 FROM bronze.olist_sellers;
 
