@@ -8,7 +8,7 @@ WARNING:
     TRUNCATE removes all rows from the Bronze tables before loading.
 
 NOTE:
-    The BULK INSERT paths point to 'C:\sql\Brazilian-E-Commerce\olist_order_items_dataset\'.
+    The BULK INSERT paths point to 'C:\sql\Brazilian-E-Commerce\'.
     Change them to the folder where you saved the datasets.
 
 BULK INSERT options used:
