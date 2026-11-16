@@ -2,13 +2,13 @@
 
 ## Overview
 
-The Gold layer is the final, business-ready layer. Its data is organized as a star schema or, more precisely, as the Fact Constellation Schema (Galaxy Schema) to support reporting and analytics, and it contains **dimension tables** (descriptive context) and a **fact table** (measurable business events).
+The Gold layer is the final, business-ready layer. Its data is organized as a star schema or, more precisely, as the Fact Constellation Schema (Galaxy Schema) to support reporting and analytics, and it contains **dimension views** (descriptive context) and a **fact views** (measurable business events).
 
 ---
 
 ## 1. gold.dim_products
 
-**Purpose:** Contains information about products, categories, physical dimensions, and product card specifications..
+**Purpose:** Contains information about products, categories, physical dimensions, and product card specifications.
 
 ---
 
