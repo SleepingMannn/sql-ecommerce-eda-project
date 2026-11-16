@@ -2,7 +2,7 @@
 --#2 DDL Script: Create Bronze Tables
 --============================================================
 
-USE olist_ecommerce; -- change to the actual database name
+USE olist_ecommerce;
 GO
 
 -- #1 olist_customers_dataset
