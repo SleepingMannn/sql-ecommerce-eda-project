@@ -19,7 +19,7 @@ CREATE TABLE silver.olist_customers (
 );
 GO
 
--- #2 olist_geolocation_dataset (updated!)
+-- #2 olist_geolocation_dataset
 IF OBJECT_ID('silver.olist_geolocation', 'U') IS NOT NULL
 	  DROP TABLE silver.olist_geolocation;
 GO
