@@ -267,7 +267,10 @@ SELECT
 	product_category_name_english
 FROM bronze.product_category_name_translation;
 
--- Two categories missing in the source translation file (added manually)
+/*Manual enrichment. The source file product_category_name_translation.csv has no English name 
+  for two categories used by products: portateis_cozinha_e_preparadores_de_alimentos and pc_gamer. 
+  Two rows were added manually in the Silver load: portable_kitchen_food_preparers and pc_gamer. 
+  Result: 73 categories with translation. Bronze stays unchanged (71 rows).*/
 INSERT INTO silver.product_category_name_translation (
 	product_category_name, 
 	product_category_name_english)
