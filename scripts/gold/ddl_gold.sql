@@ -2,6 +2,31 @@
 ===============================================================================
 DDL Script: Create Gold Views
 ===============================================================================
+Purpose:
+    Creates the business-ready layer: 3 dimension views and 3 fact views
+    (a fact constellation: several star schemas sharing dimensions).
+    Views store no data; they read Silver every time.
+
+Objects (grain = what one row means):
+    gold.dim_customers        1 row = 1 customer_id (new for every order);
+                              the real person is customer_unique_id
+    gold.dim_sellers          1 row = 1 seller
+    gold.dim_products         1 row = 1 product; category in English,
+                              missing category = 'unknown'
+    gold.fact_order_items     1 row = 1 item in an order
+                              (key: order_id + order_item_id)
+    gold.fact_orders          1 row = 1 order; items are aggregated to order
+                              level before joining, so rows are not multiplied
+    gold.fact_order_payments  1 row = 1 payment record
+                              (key: order_id + payment_sequential)
+
+Rules:
+    - delivery_days / delivery_delay_days are calculated only for delivered
+      orders, in calendar days. delivery_delay_days > 0 means late delivery.
+    - Orders without items have NULL totals (no items is not the same as 0).
+    - Do not join fact tables to each other directly: aggregate one side to
+      order level first, or rows will be multiplied.
+===============================================================================
 */
 
 USE olist_ecommerce;
@@ -97,7 +122,7 @@ SELECT
 	END AS delivery_days,
 	CASE 
 		WHEN o.order_status = 'delivered' THEN DATEDIFF(day, o.order_estimated_delivery_date, o.order_delivered_customer_date) 
-	END AS delivery_delay_days, -- A positive value indicates a delay; a negative value indicates early delivery.
+	END AS delivery_delay_days,           -- A positive value indicates a delay; a negative value indicates early delivery.
 	i.total_items,
 	i.total_price,
 	i.total_freight,
