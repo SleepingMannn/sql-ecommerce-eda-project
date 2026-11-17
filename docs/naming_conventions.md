@@ -20,7 +20,11 @@ The same style (`snake_case`) is used as in my Data Warehouse project, adapted t
 - **Database and schemas:** database `olist_ecommerce`; schemas `bronze`, `silver`, `gold`.
 - **No reserved words** as object names (for example `order` is a reserved word, so the table is called `olist_orders`).
 - **Traceability:** bronze and silver keep the names from the source files, so every object can be traced back to its CSV.
-- **SQL scripts:** `NN_<purpose>.sql`, numbered in the order of execution (`01_create_tables.sql`).
+- **SQL scripts:**
+   - SQL scripts are organized by data layer and operation.
+   - DDL scripts define database objects.
+   - DML scripts load and transform data.
+   - The initialization script creates the database and schemas.
 
 ---
 
