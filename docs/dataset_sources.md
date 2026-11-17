@@ -1,4 +1,4 @@
-## Dataset & Attribution
+# Dataset & Attribution
 
 This project uses the **Brazilian E-Commerce Public Dataset by Olist**, published by Olist on Kaggle.
 
