@@ -1,37 +1,37 @@
 /*
 ===============================================================================
-Script: Load Bronze Layer (Source → Bronze)
+DML Script: Load Bronze Layer (Source → Bronze)
 ===============================================================================
-...
+Purpose:
+    Loads the 9 Olist CSV files into the Bronze tables with BULK INSERT.
+    Method: full load (TRUNCATE, then BULK INSERT). No transformations.
+
+Before you run:
+    1. Download the dataset (see datasets/README.md) and save the CSV files
+       in one folder.
+    2. Replace the folder path 'C:\sql\Brazilian-E-Commerce\' in every
+       BULK INSERT below with your folder.
+    3. The SQL Server service account must have read access to that folder,
+       otherwise BULK INSERT fails with an access error.
 
 WARNING:
     TRUNCATE removes all rows from the Bronze tables before loading.
 
-NOTE:
-    The BULK INSERT statements use local absolute paths to the CSV files.
-    Update each path to match the directory where the dataset files are stored on your machine.
-
 BULK INSERT options used:
-    FORMAT = 'CSV'         Reads the file as CSV: handles quoted values, commas
-                           and line breaks inside quotes.
-    FIRSTROW = 2           The first row of each file is the header.
-    ROWTERMINATOR = '0x0a' End of a row. In a text file the end of a line is an
-                           invisible character: Windows uses two (CR + LF, \r\n),
-                           Linux and Mac use one (LF, \n = 0x0a). Most of these
-                           files use LF only, so the parameter is set explicitly.
-                           The reviews file uses CR + LF, so it has no
-                           ROWTERMINATOR and SQL Server uses its default.
-    CODEPAGE = '65001'     UTF-8, so Portuguese letters are loaded correctly.
-    TABLOCK                Locks the table during loading to speed it up.
+    FORMAT = 'CSV'          Reads the file as CSV (quoted values, commas and
+                            line breaks inside quotes).
+    FIRSTROW = 2            The first row of each file is the header.
+    ROWTERMINATOR = '0x0a'  End of a row = LF only (Linux/Mac style). Eight files
+                            use LF. The reviews file uses CR + LF, so it has no
+                            ROWTERMINATOR (SQL Server default).
+    CODEPAGE = '65001'      UTF-8, so Portuguese letters load correctly.
+    TABLOCK                 Table lock during loading, faster load.
 ===============================================================================
 */
 
 USE olist_ecommerce;   -- change to the actual database name
 GO
 
-PRINT '==================================================================';
-PRINT 'Loading Bronze Layer';
-PRINT '==================================================================';
 -- #1 olist_customers_dataset
 TRUNCATE TABLE bronze.olist_customers;
 
