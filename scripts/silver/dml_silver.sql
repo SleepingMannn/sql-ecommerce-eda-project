@@ -1,22 +1,31 @@
 /*
 ===============================================================================
-Script: Load Silver Layer (Bronze → Silver)
-
+DML Script: Load Silver Layer (Bronze → Silver)
+===============================================================================
 Purpose:
-    Load data from Bronze into Silver tables.
+    Cleans and standardizes the Bronze data and loads it into Silver.
+    Method: full load (TRUNCATE, then INSERT ... SELECT).
 
 Transformations:
-    - Trim leading and trailing spaces from selected text fields.
-    - Standardize Brazilian state codes into full state names.
-    - Rename misspelled product attribute columns.
-    - Convert source columns to their defined Silver data types.
-    - Enrich the product category translation mapping with two manually added English labels.
+    customers, sellers   TRIM city; state code (SP) → full name (São Paulo);
+                         unknown or missing state → 'unknown'.
+    product_category_name_translation
+                         2 categories missing in the source file are added
+                         manually (see the comment next to the INSERT).
+    orders               order_estimated_delivery_date converted to DATE.
+    order_items, order_payments, order_reviews
+                         Copied without changes.
 
-Loading Strategy:
-    TRUNCATE and INSERT.
+Decisions (not changed in Silver, see docs/data_quality_report.md):
+    - NULL dates and date-order anomalies in orders are kept; nothing is imputed.
+    - Missing product category stays NULL here; it becomes 'unknown' in Gold.
 
-Note:
-    Bronze tables remain unchanged.
+Rule for missing values:
+    Text attributes used for grouping (state, category) → 'unknown'.
+    Numbers, dates and measures keep NULL.
+
+WARNING:
+    TRUNCATE removes all rows from the Silver tables before loading.
 ===============================================================================
 */
 
