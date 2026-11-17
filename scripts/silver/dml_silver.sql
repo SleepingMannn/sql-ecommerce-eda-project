@@ -1,11 +1,26 @@
 /*
 ===============================================================================
 Script: Load Silver Layer (Bronze → Silver)
-===============================================================================
-...
+
+Purpose:
+    Load data from Bronze into Silver tables.
+
+Transformations:
+    - Trim leading and trailing spaces from selected text fields.
+    - Standardize Brazilian state codes into full state names.
+    - Rename misspelled product attribute columns.
+    - Convert source columns to their defined Silver data types.
+    - Enrich the product category translation mapping with two manually added English labels.
+
+Loading Strategy:
+    TRUNCATE and INSERT.
+
+Note:
+    Bronze tables remain unchanged.
 ===============================================================================
 */
-USE olist_ecommerce;   -- change to the actual database name
+
+USE olist_ecommerce;
 GO
 
 PRINT '==================================================================';
