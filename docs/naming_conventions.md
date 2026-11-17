@@ -13,7 +13,7 @@ The conventions are designed to keep database objects consistent, traceable to t
 - **Database and schemas:** database `olist_ecommerce`; schemas `bronze`, `silver`, `gold`.
 - **No reserved words** as object names (for example `order` is a reserved word, so the table is called `olist_orders`).
 - **Traceability:** bronze and silver keep the names from the source files, so every object can be traced back to its CSV.
-- **Units:** include units in derived column names where useful, for example delivery_days, product_weight_g, and product_length_cm.
+- **Units:** include units in derived column names where useful, for example `delivery_days`, `product_weight_g`, and `product_length_cm`.
 - **SQL scripts:**
    - SQL scripts are organized by data layer and operation.
    - DDL scripts define database objects.
@@ -26,7 +26,7 @@ The conventions are designed to keep database objects consistent, traceable to t
 |--------|------|---------|
 | Database | `olist_ecommerce` | Project database |
 | Schema | `bronze` | Source-aligned data ingestion layer |
-| Schema | `silver` | Standardized and typed data layer |
+| Schema | `silver` | Standardized data layer |
 | Schema | `gold` | Business-ready analytical views |
 
 ## 4. Layer Rules
@@ -36,7 +36,6 @@ The conventions are designed to keep database objects consistent, traceable to t
 - Schema: `bronze`.
 - Table name: `<source>_<entity>`, taken from the CSV file name without the `_dataset` suffix.
 - Data is stored as in the source, but it is **not a fully raw all-text layer**: SQL data types are assigned in the DDL based on the known source formats. Column names stay as in the CSV.
-
 
 | CSV file | Bronze table |
 |----------|--------------|
@@ -102,4 +101,3 @@ SQL scripts are organized by layer and operation rather than by numeric executio
 - `ddl_` identifies Data Definition Language scripts that create database objects.
 - `dml_` identifies Data Manipulation Language scripts that load or modify data.
 - `init_database.sql` initializes the database and schemas.
-- SQL script filenames use lowercase `snake_case`.
