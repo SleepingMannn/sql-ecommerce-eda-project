@@ -6,6 +6,6 @@ Download the Brazilian E-Commerce Public Dataset by Olist from Kaggle: https://w
 
 Place the downloaded CSV files in this directory.
 
-Update the file paths in: scripts/bronze/dml_bronze.sql
+Update the file paths in: `scripts/bronze/dml_bronze.sql`
 
-See docs/dataset_sources.md for attribution and license information.
+See `docs/dataset_sources.md` for attribution and license information.
