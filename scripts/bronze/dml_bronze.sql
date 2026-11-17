@@ -8,8 +8,8 @@ WARNING:
     TRUNCATE removes all rows from the Bronze tables before loading.
 
 NOTE:
-    The BULK INSERT paths point to 'C:\sql\Brazilian-E-Commerce\'.
-    Change them to the folder where you saved the datasets.
+    The BULK INSERT statements use local absolute paths to the CSV files.
+    Update each path to match the directory where the dataset files are stored on your machine.
 
 BULK INSERT options used:
     FORMAT = 'CSV'         Reads the file as CSV: handles quoted values, commas
