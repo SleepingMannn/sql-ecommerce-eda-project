@@ -87,7 +87,7 @@ These are logical keys documented for the model. The current objects are views; 
 
 ## 5. SQL Script Naming and Organization
 
-SQL scripts are organized by layer and operation rather than by numeric execution prefixes.
+SQL scripts are organized by layer and operation.
 
 | File | Purpose |
 |------|---------|
