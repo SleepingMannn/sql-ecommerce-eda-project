@@ -2,7 +2,11 @@
 
 The original CSV files are not included in this repository.
 
-Download the Brazilian E-Commerce Public Dataset by Olist from Kaggle: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+Download the **Brazilian E-Commerce Public Dataset by Olist** from Kaggle:
+
+[Download the dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+
+After downloading, extract the CSV files into this directory.
 
 You will find a list of 9 files, such as:
 - olist_customers_dataset;
@@ -17,6 +21,6 @@ You will find a list of 9 files, such as:
 
 Place the downloaded CSV files in this directory.
 
-Update the file paths in: `scripts/bronze/dml_bronze.sql`
+Before running the Bronze loading script, update the local file paths in: `scripts/bronze/dml_bronze.sql`
 
-See `docs/dataset_sources.md` for attribution and license information.
+For dataset attribution and license information, see [`docs/dataset_sources.md`](../docs/dataset_sources.md).
