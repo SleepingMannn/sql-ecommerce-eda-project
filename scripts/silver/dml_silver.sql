@@ -68,7 +68,7 @@ INSERT INTO silver.olist_geolocation (
 	geolocation_city,
 	geolocation_state)
 SELECT
-	TRIM(geolocation_zip_code_prefix),
+	geolocation_zip_code_prefix,
 	geolocation_lat,
 	geolocation_lng,
 	TRIM(geolocation_city),
