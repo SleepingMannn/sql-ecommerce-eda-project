@@ -5,6 +5,8 @@
 The Gold layer contains 3 dimension views and 3 fact views.
 The model follows a Fact Constellation Schema.
 
+---
+
 ## Dimensions
 
 ### gold.dim_customers
@@ -54,6 +56,8 @@ The model follows a Fact Constellation Schema.
 | product_photos_qty | Number of product photos |
 | product_name_length | Product name length |
 | product_description_length | Product description length |
+
+---
 
 ## Facts
 
