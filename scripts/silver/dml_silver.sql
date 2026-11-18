@@ -1,40 +1,24 @@
 /*
-===============================================================================
-DML Script: Load Silver Layer (Bronze → Silver)
-===============================================================================
 Purpose:
-    Cleans and standardizes the Bronze data and loads it into Silver.
-    Method: full load (TRUNCATE, then INSERT ... SELECT).
+    Transforms and loads Bronze data into Silver.
 
 Transformations:
-    customers, sellers   TRIM city; state code (SP) → full name (São Paulo);
-                         unknown or missing state → 'unknown'.
-    product_category_name_translation
-                         2 categories missing in the source file are added
-                         manually (see the comment next to the INSERT).
-    orders               order_estimated_delivery_date converted to DATE.
-    order_items, order_payments, order_reviews
-                         Copied without changes.
+    - Trims city names.
+    - Converts state codes to full names.
+    - Renames misspelled product columns.
+    - Converts estimated delivery date to DATE.
+    - Adds 2 missing product category translations.
 
-Decisions (not changed in Silver, see docs/data_quality_report.md):
-    - NULL dates and date-order anomalies in orders are kept; nothing is imputed.
-    - Missing product category stays NULL here; it becomes 'unknown' in Gold.
+Notes:
+    Missing dates and source data anomalies are preserved.
+    Missing product categories remain NULL in Silver.
 
-Rule for missing values:
-    Text attributes used for grouping (state, category) → 'unknown'.
-    Numbers, dates and measures keep NULL.
-
-WARNING:
-    TRUNCATE removes all rows from the Silver tables before loading.
-===============================================================================
+Warning:
+    Silver tables are truncated before loading.
 */
 
 USE olist_ecommerce;
 GO
-
-PRINT '==================================================================';
-PRINT 'Loading Silver Layer';
-PRINT '==================================================================';
 
 -- #1 olist_customers_dataset
 TRUNCATE TABLE silver.olist_customers;
@@ -291,10 +275,10 @@ SELECT
 	product_category_name_english
 FROM bronze.product_category_name_translation;
 
-/*Manual enrichment. The source file product_category_name_translation.csv has no English name 
-  for two categories used by products: portateis_cozinha_e_preparadores_de_alimentos and pc_gamer. 
-  Two rows were added manually in the Silver load: portable_kitchen_food_preparers and pc_gamer. 
-  Result: 73 categories with translation. Bronze stays unchanged (71 rows).*/
+/* Manual enrichment. The source file product_category_name_translation.csv has no English name 
+   for two categories used by products: portateis_cozinha_e_preparadores_de_alimentos and pc_gamer. 
+   Two rows were added manually in the Silver load: portable_kitchen_food_preparers and pc_gamer. 
+   Result: 73 categories with translation. Bronze stays unchanged (71 rows).*/
 INSERT INTO silver.product_category_name_translation (
 	product_category_name, 
 	product_category_name_english)
