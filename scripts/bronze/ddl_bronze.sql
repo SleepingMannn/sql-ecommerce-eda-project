@@ -1,24 +1,12 @@
 /*
-===============================================================================
-DDL Script: Create Bronze Tables
-===============================================================================
 Purpose:
-    Creates the 9 Bronze tables that receive the raw Olist CSV files.
-    Bronze is a typed copy of the source: no cleaning, no renaming.
+    Creates 9 Bronze tables for the Olist source CSV files.
 
-Design decisions:
-    - Table names follow the CSV file names without the '_dataset' suffix.
-    - Column names are exactly as in the CSV, including the source typos
-      (product_name_lenght, product_description_lenght). They are fixed in Silver.
-    - Types: identifiers, codes and text = NVARCHAR(50); review texts = NVARCHAR(MAX);
-      counts = INT; money = DECIMAL(10, 2); timestamps = DATETIME2.
-      Latitude/longitude and ZIP prefixes stay text (ZIP keeps leading zeros).
-    - No primary keys, foreign keys or constraints, so that every row of the
-      source can be loaded as it is.
+Notes:
+    Source column names are preserved. Data types are assigned during ingestion.
 
-WARNING:
-    Each table is dropped and recreated. All data in the Bronze tables is lost.
-===============================================================================
+Warning:
+    Existing Bronze tables are dropped and recreated.
 */
 
 USE olist_ecommerce;
