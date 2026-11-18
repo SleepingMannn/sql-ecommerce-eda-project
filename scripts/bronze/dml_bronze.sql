@@ -1,35 +1,19 @@
 /*
-===============================================================================
-DML Script: Load Bronze Layer (Source → Bronze)
-===============================================================================
 Purpose:
-    Loads the 9 Olist CSV files into the Bronze tables with BULK INSERT.
-    Method: full load (TRUNCATE, then BULK INSERT). No transformations.
+    Loads 9 Olist CSV files into the Bronze tables.
 
-Before you run:
-    1. Download the dataset (see datasets/README.md) and save the CSV files
-       in one folder.
-    2. Replace the folder path 'C:\sql\Brazilian-E-Commerce\' in every
-       BULK INSERT below with your folder.
-    3. The SQL Server service account must have read access to that folder,
-       otherwise BULK INSERT fails with an access error.
+Method:
+    Full load using BULK INSERT. No data transformations.
 
-WARNING:
-    TRUNCATE removes all rows from the Bronze tables before loading.
+Before execution:
+    Update the CSV file paths.
+    Ensure SQL Server has read access to the files.
 
-BULK INSERT options used:
-    FORMAT = 'CSV'          Reads the file as CSV (quoted values, commas and
-                            line breaks inside quotes).
-    FIRSTROW = 2            The first row of each file is the header.
-    ROWTERMINATOR = '0x0a'  End of a row = LF only (Linux/Mac style). Eight files
-                            use LF. The reviews file uses CR + LF, so it has no
-                            ROWTERMINATOR (SQL Server default).
-    CODEPAGE = '65001'      UTF-8, so Portuguese letters load correctly.
-    TABLOCK                 Table lock during loading, faster load.
-===============================================================================
+Warning:
+    Existing Bronze data is truncated before loading.
 */
 
-USE olist_ecommerce;   -- change to the actual database name
+USE olist_ecommerce;
 GO
 
 -- #1 olist_customers_dataset
@@ -38,11 +22,11 @@ TRUNCATE TABLE bronze.olist_customers;
 BULK INSERT bronze.olist_customers
 FROM 'C:\sql\Brazilian-E-Commerce\olist_customers_dataset.csv'
 WITH (
-    FORMAT = 'CSV',
-    FIRSTROW = 2,
-    ROWTERMINATOR = '0x0a', 
-    CODEPAGE = '65001',
-    TABLOCK
+    FORMAT = 'CSV',         -- Reads the file as CSV (quoted values, commas and line breaks inside quotes).
+    FIRSTROW = 2,           -- The first row of each file is the header.
+    ROWTERMINATOR = '0x0a', -- End of a row. Most of files use LF only, so the parameter is set explicitly. 
+    CODEPAGE = '65001',     -- UTF-8, so Portuguese letters load correctly
+    TABLOCK                 -- Table lock during loading, faster load
 );
 
 -- #2 olist_geolocation_dataset
