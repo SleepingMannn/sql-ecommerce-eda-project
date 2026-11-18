@@ -1,32 +1,14 @@
 /*
-===============================================================================
-DDL Script: Create Gold Views
-===============================================================================
 Purpose:
-    Creates the business-ready layer: 3 dimension views and 3 fact views
-    (a fact constellation: several star schemas sharing dimensions).
-    Views store no data; they read Silver every time.
+    Creates 3 dimension views and 3 fact views for business analysis.
 
-Objects (grain = what one row means):
-    gold.dim_customers        1 row = 1 customer_id (new for every order);
-                              the real person is customer_unique_id
-    gold.dim_sellers          1 row = 1 seller
-    gold.dim_products         1 row = 1 product; category in English,
-                              missing category = 'unknown'
-    gold.fact_order_items     1 row = 1 item in an order
-                              (key: order_id + order_item_id)
-    gold.fact_orders          1 row = 1 order; items are aggregated to order
-                              level before joining, so rows are not multiplied
-    gold.fact_order_payments  1 row = 1 payment record
-                              (key: order_id + payment_sequential)
+Model:
+    Fact Constellation Schema (Galaxy Schema).
 
-Rules:
-    - delivery_days / delivery_delay_days are calculated only for delivered
-      orders, in calendar days. delivery_delay_days > 0 means late delivery.
-    - Orders without items have NULL totals (no items is not the same as 0).
-    - Do not join fact tables to each other directly: aggregate one side to
-      order level first, or rows will be multiplied.
-===============================================================================
+Notes:
+    Each view has a defined grain and logical key.
+    Order items are aggregated before joining to fact_orders.
+    Delivery metrics are calculated in calendar days.
 */
 
 USE olist_ecommerce;
