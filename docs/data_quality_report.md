@@ -1,5 +1,7 @@
 # Data Quality Report
 
+---
+
 ## 1. Scope
 
 | Item | Value |
@@ -7,6 +9,8 @@
 | Source | Olist Brazilian E-Commerce Public Dataset (Kaggle), 9 CSV files, CC BY-NC-SA 4.0 |
 | Layers checked | Bronze → Silver → Gold (SQL Server 2022) |
 | Principle | Bronze is never changed. Values are never invented (no imputing dates or prices). NULL is kept when it has business meaning. Problems are fixed in silver or filtered at metric level in EDA |
+
+---
 
 ## 2. Issues log
 
@@ -24,9 +28,11 @@
 | 10 | `product_category_name_translation` | `product_category_name` | 2 categories used by products have no translation | 2 | Y | 2 rows added manually in silver load (`portateis_cozinha_e_preparadores_de_alimentos`, `pc_gamer`). Silver has 2 rows more than bronze | 
 | 11 | `olist_customers`, `olist_sellers`, `olist_geolocation` | `..._state` | State stored as 2-letter code | 27 distinct rows | Y | Replaced by full name, unknown code → `'unknown'` |
 
+---
+
 ## 3. Excluded Information
 
 | Table | Status | Decision |
 |---|---|---|
-| olist_geolocation | EXCLUDED | Retained in Bronze/Silver. Not used in Gold because geographical analysis is outside the project scope. |
-| olist_order_reviews | EXCLUDED | Retained in Bronze/Silver. Not used in Gold because review analysis is outside the project scope. |
+| `olist_geolocation` | EXCLUDED | Retained in Bronze/Silver. Not used in Gold because geographical analysis is outside the project scope. |
+| `olist_order_reviews` | EXCLUDED | Retained in Bronze/Silver. Not used in Gold because review analysis is outside the project scope. |
