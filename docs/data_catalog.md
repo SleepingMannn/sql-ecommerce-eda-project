@@ -7,6 +7,29 @@ The model follows a Fact Constellation Schema.
 
 ---
 
+## Source Tables
+
+A total of 9 source tables are processed through the Bronze and Silver layers:
+
+- silver.olist_customers
+- silver.olist_geolocation
+- silver.olist_order_items
+- silver.olist_order_payments
+- silver.olist_order_reviews
+- silver.olist_orders
+- silver.olist_products
+- silver.olist_sellers
+- silver.product_category_name_translation
+
+The following tables are excluded from the current analytical scope and are not used in the Gold layer:
+
+- silver.olist_geolocation
+- silver.olist_order_reviews
+
+These tables remain available in the Silver layer and can be reconsidered if future analytical requirements arise.
+
+---
+
 ## Dimensions
 
 ### gold.dim_customers
