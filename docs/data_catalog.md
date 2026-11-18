@@ -1,43 +1,118 @@
-# Data Catalog: Gold Layer
+# Data Catalog
 
 ## Overview
 
-The Gold layer is the final, business-ready layer. Its data is organized as a star schema or, more precisely, as the Fact Constellation Schema (Galaxy Schema) to support reporting and analytics, and it contains **dimension views** (descriptive context) and a **fact views** (measurable business events).
+The Gold layer contains 3 dimension views and 3 fact views.
+The model follows a Fact Constellation Schema.
 
----
+## Dimensions
 
-## 1. gold.dim_products
+### gold.dim_customers
 
-**Purpose:** Contains information about products, categories, physical dimensions, and product card specifications.
+- Purpose: Customer information for customer segmentation.
+- Grain: One row per customer_id.
+- PK: customer_id.
+- Source: silver.olist_customers.
 
----
+| Column | Description |
+|---|---|
+| customer_id | Order-specific customer identifier |
+| customer_unique_id | Identifier of the actual customer |
+| customer_zip_code_prefix | Customer ZIP code prefix |
+| customer_city | Customer city |
+| customer_state | Customer state |
 
-## 2. gold.dim_sellers
+### gold.dim_sellers
 
-**Purpose:** Contains basic information about sellers and their geographic locations.
+- Purpose: Seller information and location.
+- Grain: One row per seller.
+- PK: seller_id.
+- Source: silver.olist_sellers.
 
----
+| Column | Description |
+|---|---|
+| seller_id | Unique seller identifier |
+| seller_zip_code_prefix | Seller ZIP code prefix |
+| seller_city | Seller city |
+| seller_state | Seller state |
 
-## 3. gold.dim_customers
+### gold.dim_products
 
-**Purpose:** Contains data on customers and their geographic locations.
+- Purpose: Product attributes and categories.
+- Grain: One row per product.
+- PK: product_id.
+- Source: silver.olist_products, silver.product_category_name_translation.
 
----
+| Column | Description |
+|---|---|
+| product_id | Unique product identifier |
+| product_category_name_english | Product category in English |
+| product_weight_g | Product weight in grams |
+| product_length_cm | Product length in cm |
+| product_height_cm | Product height in cm |
+| product_width_cm | Product width in cm |
+| product_photos_qty | Number of product photos |
+| product_name_length | Product name length |
+| product_description_length | Product description length |
 
-## 4. gold.fact_order_items
+## Facts
 
-**Purpose:** Contains detailed sales data for each line item in the order.
+### gold.fact_orders
 
----
+- Purpose: Order-level metrics and delivery performance.
+- Grain: One row per order.
+- PK: order_id.
+- FK: customer_id → dim_customers.customer_id.
+- Source: silver.olist_orders, silver.olist_order_items.
 
-## 5. gold.fact_orders
+| Column | Description |
+|---|---|
+| order_id | Unique order identifier |
+| customer_id | Customer associated with the order |
+| order_status | Current order status in the source |
+| order_purchase_timestamp | Order purchase timestamp |
+| order_delivered_customer_date | Actual customer delivery timestamp |
+| order_estimated_delivery_date | Estimated delivery date |
+| delivery_days | Calendar days from purchase to delivery |
+| delivery_delay_days | Difference between actual and estimated delivery |
+| total_items | Number of order items |
+| total_price | Sum of item prices |
+| total_freight | Sum of freight values |
+| total_order_value | Item price plus freight |
 
-**Purpose:** Contains summary information for each order
+### gold.fact_order_items
 
----
+- Purpose: Item-level sales and product performance.
+- Grain: One row per order item.
+- PK: order_id + order_item_id.
+- FK: product_id, customer_id, seller_id, order_id.
+- Source: silver.olist_order_items, silver.olist_orders.
 
-## 6. gold.fact_order_payments
+| Column | Description |
+|---|---|
+| order_id | Order identifier |
+| order_item_id | Item sequence within the order |
+| product_id | Product identifier |
+| customer_id | Customer associated with the order |
+| seller_id | Seller responsible for the item |
+| order_status | Order status |
+| order_purchase_timestamp | Purchase timestamp |
+| price | Item price |
+| freight_value | Item freight value |
+| item_total_value | Item price plus freight |
 
-**Purpose:** Contains data on transactions and payment methods for each order.
+### gold.fact_order_payments
 
----
+- Purpose: Payment methods and payment amounts.
+- Grain: One row per payment record.
+- PK: order_id + payment_sequential.
+- FK: order_id → fact_orders.order_id.
+- Source: silver.olist_order_payments.
+
+| Column | Description |
+|---|---|
+| order_id | Order identifier |
+| payment_sequential | Payment sequence within the order |
+| payment_type | Payment method |
+| payment_installments | Number of installments |
+| payment_value | Payment amount |
