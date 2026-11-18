@@ -1,19 +1,13 @@
 /*
-===============================================================================
-DDL Script: Create Silver Tables
-===============================================================================
 Purpose:
-    Creates the 9 Silver tables (cleaned and standardized data).
-    Table and column names match Bronze, so each table can be traced to its CSV.
+    Creates 9 Silver tables for cleaned and standardized data.
 
-Differences from Bronze:
-    - olist_products: source typos fixed (lenght → length).
-    - olist_orders: order_estimated_delivery_date is DATE (the source always has
-      the time 00:00:00).
+Notes:
+    Source column names are preserved, except for corrected typos.
+    order_estimated_delivery_date uses DATE data type.
 
-WARNING:
-    Each table is dropped and recreated. All data in the Silver tables is lost.
-===============================================================================
+Warning:
+    Existing Silver tables are dropped and recreated.
 */
 
 USE olist_ecommerce;
