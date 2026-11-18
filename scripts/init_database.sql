@@ -1,16 +1,9 @@
--- ============================================================
--- Create Database and Schemas
--- ============================================================
 /*
-Script Purpose:
-    This script creates a new database named 'olist_ecommerce' after checking if it already exists.
-    If the database exists, it is dropped and recreated. Additionally, the script sets up three schemas
-    within the database: 'bronze', 'silver', and 'gold'.
+Purpose:
+    Creates the olist_ecommerce database and bronze, silver, gold schemas.
 
-WARNING:
-    Running this script will drop the entire 'olist_ecommerce' database if it exists.
-    All data in the database will be permanently deleted. Proceed with caution
-    and ensure you have proper backups before running this script.
+Warning:
+    Drops the existing database if it already exists.
 */
 
 USE master;
