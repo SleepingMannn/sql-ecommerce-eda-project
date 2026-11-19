@@ -31,6 +31,20 @@
 - The two manually added category translations are project-defined values, not original Olist translations.
 - Row counts are issue-specific; the same record may be included in more than one finding.
 
+### Product Category Translation
+
+Five spelling errors were identified in the English category names provided by the source dataset.
+
+The errors were corrected during the Bronze-to-Silver transformation. Additionally, two missing English category translations were added for categories present in the products dataset.
+
+Original Bronze data remains unchanged.
+
+| Correction Type | Count |
+|---|---:|
+| Spelling corrections | 5 |
+| Added translations | 2 |
+| Total Silver records | 73 |
+
 ## 3. Excluded Tables
 
 | Table | Status | Reason |
