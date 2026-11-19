@@ -15,7 +15,6 @@ Usage:
 
 -- #1 Row Preservation
 -- Compare Bronze and Silver row counts. Expected: matching counts, except for documented transformations.
-
 SELECT
     'olist_customers' AS table_name,
     (SELECT COUNT(*) FROM bronze.olist_customers) AS bronze_rows,
@@ -95,7 +94,6 @@ HAVING COUNT(*) > 1;
 
 -- #3 Completeness & Validity
 -- Check date sequence. Review returned records; do not automatically remove them.
-
 SELECT
     order_id,
     order_purchase_timestamp,
