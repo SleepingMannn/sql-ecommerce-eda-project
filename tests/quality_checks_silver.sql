@@ -60,7 +60,6 @@ SELECT
     (SELECT COUNT(*) FROM bronze.product_category_name_translation),
     (SELECT COUNT(*) FROM silver.product_category_name_translation);
 
-
 -- #2 Key Validation
 -- Check for NULL values in logical key columns. Expected result: 0.
 -- Apply to:
@@ -78,7 +77,6 @@ SELECT *
 FROM silver.olist_order_items
 WHERE order_id IS NULL 
   OR order_item_id IS NULL;
-
 
 -- Check for duplicate logical keys. Expected result: 0.
 -- Use the logical keys listed above. Group by ALL columns forming the key.
@@ -168,7 +166,6 @@ SELECT DISTINCT
 FROM silver.olist_customers
 WHERE LEN(customer_state) = 2;
 
-
 -- Check product category translation coverage. Expected: no missing translations for non-NULL product categories.
 SELECT DISTINCT
     p.product_category_name
@@ -177,7 +174,6 @@ LEFT JOIN silver.product_category_name_translation AS t
     ON p.product_category_name = t.product_category_name
 WHERE p.product_category_name IS NOT NULL
   AND t.product_category_name IS NULL;
-
 
 -- Check duplicate category mappings. Expected result: 0.
 SELECT
