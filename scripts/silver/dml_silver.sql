@@ -267,35 +267,21 @@ FROM bronze.olist_sellers;
 -- #9 product_category_name_translation
 TRUNCATE TABLE silver.product_category_name_translation;
 
-/*
-    Corrects 5 spelling errors in English category names during Silver load.
-    Original Bronze data remains unchanged.
-*/
 INSERT INTO silver.product_category_name_translation (
-    product_category_name,
-    product_category_name_english
-)
-SELECT
-    product_category_name,
-    CASE product_category_name_english
-        WHEN 'arts_and_craftmanship' THEN 'arts_and_craftsmanship'
-        WHEN 'costruction_tools_garden' THEN 'construction_tools_garden'
-        WHEN 'costruction_tools_tools' THEN 'construction_tools_tools'
-        WHEN 'fashio_female_clothing' THEN 'fashion_female_clothing'
-        WHEN 'home_confort' THEN 'home_comfort'
-        ELSE product_category_name_english
-    END AS product_category_name_english
+	product_category_name, 
+	product_category_name_english)
+SELECT 
+	product_category_name, 
+	product_category_name_english
 FROM bronze.product_category_name_translation;
 
-/*
-    Adds English translations for 2 product categories missing
-    from the source translation file.
-    Total: 73 translated categories (71 source + 2 added).
-*/
+/* Manual enrichment. The source file product_category_name_translation.csv has no English name 
+   for two categories used by products: portateis_cozinha_e_preparadores_de_alimentos and pc_gamer. 
+   Two rows were added manually in the Silver load: portable_kitchen_food_preparers and pc_gamer. 
+   Result: 73 categories with translation. Bronze stays unchanged (71 rows).*/
 INSERT INTO silver.product_category_name_translation (
-    product_category_name,
-    product_category_name_english
-)
+	product_category_name, 
+	product_category_name_english)
 VALUES
-    ('portateis_cozinha_e_preparadores_de_alimentos', 'portable_kitchen_food_preparers'),
-    ('pc_gamer', 'pc_gamer');
+    ('portateis_cozinha_e_preparadores_de_alimentos', 'portable_kitchen_food_preparers')
+    , ('pc_gamer', 'pc_gamer');
