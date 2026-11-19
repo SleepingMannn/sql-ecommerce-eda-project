@@ -6,7 +6,7 @@ Download the **Brazilian E-Commerce Public Dataset by Olist** from Kaggle:
 
 [Download the dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
-Extract the following 9 CSV files into this directory:
+Extract the following 9 CSV files:
 
 - olist_customers_dataset.csv;
 - olist_geolocation_dataset.csv;
