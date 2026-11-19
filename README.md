@@ -15,6 +15,7 @@ The project follows a Bronze → Silver → Gold architecture and focuses on dat
 
 ## Repository Structure
 
+```
 sql-ecommerce-eda-project/
 ├── datasets/              # dataset download instructions
 ├── docs/                  # architecture, data catalog and documentation
@@ -26,6 +27,7 @@ sql-ecommerce-eda-project/
 ├── tests/                 # data quality validation
 ├── LICENSE
 └── README.md
+```
 
 ## How to Run
 
