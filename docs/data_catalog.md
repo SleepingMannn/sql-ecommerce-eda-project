@@ -21,6 +21,12 @@ A total of 9 source tables are processed through the Bronze and Silver layers:
 - silver.olist_sellers
 - silver.product_category_name_translation
 
+**Transformations** for silver.product_category_name_translation:
+
+- Corrects 5 spelling errors in English category names.
+- Adds 2 missing English category translations.
+- Preserves original category names used as join keys.
+
 The following tables are excluded from the current analytical scope and are not used in the Gold layer:
 
 - silver.olist_geolocation
