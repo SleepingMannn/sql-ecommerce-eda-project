@@ -70,7 +70,7 @@ HAVING COUNT(*) > 1 OR order_id IS NULL OR payment_sequential IS NULL;
 -- ====================================================================
 -- 2. Connectivity: every fact row finds its parent row
 -- ====================================================================
--- gold.fact_order_items -> dimensions and fact_orders
+-- gold.fact_order_items → dimensions and fact_orders
 SELECT 
     oi.order_id, 
     oi.order_item_id
@@ -85,7 +85,7 @@ LEFT JOIN gold.fact_orders o
     ON oi.order_id = o.order_id
 WHERE pr.product_id IS NULL OR se.seller_id IS NULL OR cu.customer_id IS NULL OR o.order_id IS NULL;
 
--- gold.fact_orders -> gold.dim_customers
+-- gold.fact_orders → gold.dim_customers
 SELECT 
     o.order_id
 FROM gold.fact_orders o
@@ -93,7 +93,7 @@ LEFT JOIN gold.dim_customers c
     ON o.customer_id = c.customer_id
 WHERE c.customer_id IS NULL;
 
--- gold.fact_order_payments -> gold.fact_orders
+-- gold.fact_order_payments → gold.fact_orders
 SELECT 
     p.order_id, 
     p.payment_sequential
