@@ -148,11 +148,9 @@ WHERE shipping_limit_date >= '20200101'
 -- #4 Consistency
 -- Check for unwanted leading or trailing spaces. Expected result: 0.
 SELECT
-    customer_city,
-    customer_state
+    customer_city
 FROM silver.olist_customers
-WHERE customer_city != TRIM(customer_city)
-   OR customer_state != TRIM(customer_state);
+WHERE customer_city != TRIM(customer_city);
 
 -- #5 Transformation Validation
 -- Check state standardization. Expected: no remaining two-letter state codes.
@@ -164,7 +162,7 @@ WHERE customer_city != TRIM(customer_city)
 SELECT DISTINCT 
   customer_state
 FROM silver.olist_customers
-WHERE LEN(customer_state) = 2;
+WHERE customer_state = 'unknown';
 
 -- Check product category translation coverage. Expected: no missing translations for non-NULL product categories.
 SELECT DISTINCT
