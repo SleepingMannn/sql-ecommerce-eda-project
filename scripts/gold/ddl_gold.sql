@@ -9,7 +9,6 @@ Notes:
     Each view has a defined grain and logical key.
     Order items are aggregated before joining to fact_orders.
     Delivery metrics are calculated in calendar days.
-	Aggregate fact tables to the same grain before joining to avoid row multiplication.
 */
 
 USE olist_ecommerce;
