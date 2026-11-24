@@ -52,7 +52,7 @@ CREATE TABLE bronze.olist_order_items (
 	seller_id           NVARCHAR(50),
 	shipping_limit_date DATETIME2,
 	price               DECIMAL(10, 2),
-	freight_value       DECIMAL(10, 2) 
+	freight_value       DECIMAL(10, 2)
 );
 GO
 
