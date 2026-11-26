@@ -77,3 +77,8 @@ SQL scripts are organized by layer and operation.
 | `scripts/silver/ddl_silver.sql` | Creates Silver tables |
 | `scripts/silver/dml_silver.sql` | Loads and transforms Bronze data into Silver |
 | `scripts/gold/ddl_gold.sql` | Creates Gold dimension and fact views |
+| `scripts/gold/ddl_gold_reports.sql` | Creates Gold report views |
+| `tests/quality_checks_silver.sql`, `tests/quality_checks_gold.sql` | Data quality checks per layer |
+| `analysis/<block>/<block>.sql` | EDA queries: metrics, sources, SQL |
+| `analysis/<block>/<block>.md` | Business question, findings and recommendations |
+| `docs/metric_definitions.md` | Metric definitions and analysis rules |
