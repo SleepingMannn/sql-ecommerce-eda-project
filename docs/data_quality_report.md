@@ -48,3 +48,6 @@ Exclusion does not mean that a table failed validation. These tables are intenti
 | Geolocation is excluded from the current scope | Distance-based and detailed geographical analysis will not be performed. |
 | Reviews are excluded from the current Gold scope | Review scores and their relationship with delivery or sales will not be analyzed in this project version. |
 | Historical dataset (2016–2018) | Findings describe the historical dataset and may not represent current marketplace performance. |
+| Monthly sales series has gaps and very low volume in 2016 (no delivered orders in November 2016) | Month-over-month changes for 2016 and January 2017 are not interpreted. |
+| Sales and customer metrics use delivered orders only | Cancelled, unavailable and in-progress orders are excluded from sales value and customer metrics. |
+| No promotion, campaign or marketing data | Causes of sales peaks (for example, November 2017) cannot be established from this dataset. |
