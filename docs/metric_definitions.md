@@ -6,7 +6,7 @@ Definitions used in `analysis/`.
 
 | Rule | Value |
 |---|---|
-| Analysis period | 2016-09 to 2018-08 |
+| Analysis period | All available data. Delivered orders: 2016-09 to 2018-08; trends are interpreted from 2017-02 (2016 is 0.31% of sales) |
 | Date basis | `order_purchase_timestamp` (month of purchase) |
 | Order scope | Sales and Customers: delivered orders. Order status share: all statuses |
 | Delivery metrics | Delivered orders with a delivery date; calendar days (DATEDIFF) |
@@ -21,7 +21,7 @@ Definitions used in `analysis/`.
 | Items Sold | Number of order item rows | report_sales | One row = one unit |
 | Avg Price per Item | Product Sales Value / Items Sold | report_sales | Weighted |
 | Category Share, % | Category value / total value x 100 | report_sales | Includes `unknown` |
-| MoM Change | Current month value - Previous calendar month value | report_sales | Gap in months in 2016, between 2016-10-01 and 2016-12-01 |
+| MoM Change | Month value - previous month value | report_sales | Previous month present in the data; interpreted from 2017-02 |
 
 ## 3. Orders and Delivery
 
