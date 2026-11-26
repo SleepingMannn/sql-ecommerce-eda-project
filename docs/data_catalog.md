@@ -4,7 +4,7 @@
 
 The Gold layer contains 3 dimension views, 3 fact views and 3 report views. 
 Dimensions and facts follow a Fact Constellation Schema; 
-report views are aggregated for the business questions in analysis/.
+report views are aggregated for the business questions in [`analysis/`](../analysis/).
 
 ---
 
