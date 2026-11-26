@@ -153,7 +153,7 @@ FROM silver.olist_customers
 WHERE customer_city != TRIM(customer_city);
 
 -- #5 Transformation Validation
--- Check state standardization. Expected: no remaining two-letter state codes.
+-- Check state standardization. Expected: no 'unknown' states (all state codes were mapped).
 -- Apply to:
 --   silver.olist_customers.customer_state
 --   silver.olist_sellers.seller_state
