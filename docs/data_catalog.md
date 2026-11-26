@@ -144,3 +144,65 @@ These tables remain available in the Silver layer and can be reconsidered if fut
 | payment_type | Payment method |
 | payment_installments | Number of installments |
 | payment_value | Payment amount |
+
+---
+
+## Reports
+
+Report views are built on top of the dimension and fact views and are not part of the Fact Constellation Schema.
+
+### gold.report_sales
+
+- Purpose: Product sales by month and category (Sales Performance Analysis).
+- Grain: One row per product category per calendar month.
+- Filter: Delivered orders only.
+- Source: gold.fact_order_items, gold.dim_products, gold.dim_customers.
+
+| Column | Description |
+|---|---|
+| month_start | First day of the purchase month |
+| product_category | Product category in English |
+| total_orders | Distinct orders |
+| total_customers | Distinct customer_unique_id |
+| total_quantity | Number of order items |
+| product_sales_value | Sum of item prices, excluding freight |
+| freight_value | Sum of freight values |
+| total_order_value | Product sales value plus freight for the month and category |
+| avg_selling_price | Average item price; recalculate as value / quantity when aggregating |
+
+### gold.report_orders_delivery
+
+- Purpose: Order status and delivery performance (Orders & Delivery Analysis).
+- Grain: One row per order.
+- Filter: None (all order statuses).
+- Source: gold.fact_orders, gold.dim_customers.
+
+| Column | Description |
+|---|---|
+| order_id | Unique order identifier |
+| customer_state | Customer (delivery) state |
+| order_status | Order status in the source |
+| delivery_status | `Late`, `On-time`, `not_applicable` (not delivered) or `unknown` (no delivery date) |
+| order_purchase_timestamp | Order purchase timestamp |
+| order_delivered_customer_date | Actual customer delivery timestamp |
+| order_estimated_delivery_date | Estimated delivery date |
+| delivery_days | Calendar days from purchase to delivery |
+| delivery_delay_days | Days after the estimated date; negative = early |
+
+### gold.report_customers
+
+- Purpose: Customer behavior and geography (Customer Analysis).
+- Grain: One row per analysis_type and segment.
+- Filter: Delivered orders only.
+- Source: gold.fact_orders, gold.dim_customers.
+
+| Column | Description |
+|---|---|
+| analysis_type | `Customer Behavior` or `Customer Geography` |
+| segment | Customer type (`One-time Customer`, `Repeat Customer`) or customer state |
+| total_customers | Distinct customer_unique_id; in Geography a customer may appear in several states |
+| total_orders | Number of delivered orders |
+| total_items | Number of order items |
+| product_sales_value | Sum of item prices, excluding freight |
+| total_freight | Sum of freight values |
+| total_order_value | Product sales value plus freight |
