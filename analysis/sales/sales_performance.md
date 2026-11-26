@@ -23,7 +23,7 @@ further investigation when evaluating assortment development.
 - Source: gold.report_sales (built from gold.fact_order_items, gold.dim_products).
 - Analysis includes delivered orders only, 2016-09 to 2018-08.
 - Reporting grain: one row per product category per calendar month.
-- Definitions: [`docs/metric_definitions.md`](metric_definitions.md).
+- Definitions: [`../docs/metric_definitions.md`](../docs/metric_definitions.md).
 
 ### 1.5. SQL Analysis
 
