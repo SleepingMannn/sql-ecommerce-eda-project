@@ -27,7 +27,7 @@ further investigation when evaluating assortment development.
 
 ### 1.5. SQL Analysis
 
-SQL queries: [sales_performance.sql](sales_performance.sql).
+SQL queries: [`sales_performance.sql`](sales_performance.sql).
 
 ### 1.6. Findings
 
