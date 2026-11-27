@@ -37,9 +37,7 @@ One-time customers account for 12,493,089.36 (94.49%) of Product Sales Value and
 
 Sao Paulo has 39,156 customers (41.92%), 40,501 orders and 5,067,633.16 in Product Sales Value (38.33%), followed by Rio de Janeiro (12.76%) and Minas Gerais (11.78%). These three states account for 63.38% of Product Sales Value. The smallest customer bases are Roraima (40), Amapa (66) and Acre (76).
 
-Freight is 16.6% of Product Sales Value overall: 13.9% in Sao Paulo and 24.5%-28.1% in Amazonas, Rondonia, Maranhao and Roraima.
-
-Note: state shares use the sum of state-level customers (93,396); 38 customers appear in more than one state.
+Note: state shares use the sum of state-level customers (93,396); some customers appear in more than one state.
 
 ### 3.7. Interpretation
 
