@@ -1,60 +1,60 @@
-## 1. Orders and Delivery Performance Analysis
+## 2. Orders and Delivery Performance Analysis
 
-### 1.1. Business Question
+### 2.1. Business Question
 
 How efficiently are orders fulfilled, and where do delivery issues arise?
 
-### 1.2. Business Context
+### 2.2. Business Context
 
-Identify periods and customer regions that may require further investigation of delivery performance.
+Identify periods or regions that require further study of logistics.
 
-### 1.3. Required Metrics
+### 2.3. Required Metrics
 
-- Order Status Distribution — number and share of orders by status.
-- Average Delivery Time — average time from purchase to customer delivery.
-- Late Delivery Rate — percentage of delivered orders arriving after the estimated date.
-- On-Time Delivery Rate — percentage of delivered orders arriving on or before the estimated date.
-- Average Delay — average number of days late among late orders.
-- Monthly and Regional Trends — late delivery rates by purchase month and customer state.
+- Orders by Status and Order Status Share.
+- Average Delivery Time.
+- Late Rate and On-time Delivery Rate.
+- Average Delay (late orders only).
+- Late Rate by month and state (at least 30 delivered orders per month and state).
 
-### 1.4. Data Sources & Grain
+### 2.4. Data Sources & Grain
 
 - Source: gold.report_orders_delivery (built from gold.fact_orders, gold.dim_customers).
-- Analysis includes delivered orders only, 2016-09 to 2018-08.
-- Reporting grain: One row per order.
-- Definitions: `docs/metric_definitions.md`
+- Order status metrics: all 99,441 orders. Delivery metrics: 96,470 delivered orders with a delivery date, purchased 2016-09 to 2018-08.
+- Reporting grain: one row per order.
+- Definitions: `docs/metric_definitions.md`.
 
-### 1.5. SQL Analysis
+### 2.5. SQL Analysis
 
 SQL queries: [`orders_delivery_performance.sql`](orders_delivery_performance.sql).
 
-### 1.6. Findings
+### 2.6. Findings
 
-The average delivery time was 12.50 calendar days, based on 96,470 delivered orders with valid delivery dates.
+Of 99,441 orders, 96,478 (97.02%) were delivered, 1,729 (1.74%) are still in progress (shipped, invoiced, processing, created, approved) and 1,234 (1.24%) were canceled or unavailable.
 
-Among these orders, 93.23% were delivered on time or earlier, while 6.77% were delivered late (6,534 orders).
+Delivered orders with a delivery date (96,470) took 12.50 calendar days on average. 8 delivered orders without a delivery date are excluded. 93.23% (89,936) of these orders arrived on time or early and 6.77% (6,534) arrived late. Late orders were delivered 10.62 days after the estimated date on average.
 
-Late orders had an average delay of 10.62 calendar days.
+From 2017-01 to 2018-08, the monthly late rate was between 1.16% and 7.46%, except in 2017-11 (12.40%), 2018-02 (14.13%) and 2018-03 (18.96%). These three months contain 48.33% of all late orders (3,158 of 6,534) and 21.6% of delivered orders; without them the late rate is 4.46%.
 
-Eight delivered orders were excluded from delivery-time and delay calculations because the required delivery date was missing.
+Among states with at least 500 delivered orders, the late rate was highest in Maranhao (17.43%), Ceara (13.76%), Bahia (12.16%) and Rio de Janeiro (12.11%), and lowest in Parana (4.04%), Sao Paulo (4.49%) and Minas Gerais (4.57%). Rio de Janeiro has 12.8% of delivered orders but 22.88% of late orders; Sao Paulo has 41.98% and 27.85%.
 
-State-level monthly results showed elevated late-delivery rates in several periods. Examples include Maranhão in November 2017 (52.83%, 28 of 53 orders), 
-Ceará in March 2018 (50.54%, 47 of 93), Pará in March 2018 (50.75%, 34 of 67), and Rio de Janeiro in March 2018 (34.49%, 298 of 864).
+The highest late rates by month and state (at least 30 delivered orders) are Maranhao in 2017-11 (52.83%) and 2018-03 (51.02%), Para (50.75%) and Ceara (50.54%) in 2018-03. In Rio de Janeiro the late rate was 25.99% in 2017-11, 23.99% in 2017-12 and about 34% in 2018-02 and 2018-03.
 
-### 1.7. Interpretation
+### 2.7. Interpretation
 
-Most orders in the dataset were delivered, and the majority of delivered orders arrived on time or earlier.
+Most orders are delivered (97.02%) and 93.23% of delivered orders arrive on time or early, so delays are concentrated in specific periods and regions rather than spread evenly.
 
-However, the 6.77% late-delivery rate indicates an area for further investigation. The average delay of 10.62 days among late orders suggests that some delays were substantial.
+Three months hold almost half of all late orders. 2017-11 has the highest order volume in the dataset (7,289 delivered orders). The causes of the 2018-02 and 2018-03 peak cannot be determined from this dataset.
 
-Late-delivery rates varied across states and months. The observed differences identify periods and regions worth investigating, but do not establish the causes of delays.
+Rio de Janeiro drives the delays in these months (13%-34% late from 2017-11 to 2018-03 versus 4.83% in 2018-04). Late rates are also high in states such as Maranhao and Ceara.
 
-The eight delivered orders without valid delivery dates were excluded from delivery metrics and should be considered when interpreting the results.
+The dataset does not define the status `unavailable`; together with `canceled` it covers 1.24% of orders and is treated as unfulfilled orders.
 
-### 1.8. Recommendations
+### 2.8. Recommendations
 
-Investigate the state-month combinations with elevated late-delivery rates, prioritizing both the percentage of late orders and the number of affected orders.
+Study logistics in the peak months (2017-11, 2018-02, 2018-03) and in the states with the highest late rates (Maranhao, Ceara, Rio de Janeiro): compare order volume, delivery time and late rate.
 
-Compare delivery performance across regions and periods to identify recurring patterns rather than relying on isolated monthly results.
+Compare delivery time by state and by seller state versus customer state to separate distance effects from capacity effects.
 
-Monitor late-delivery and on-time delivery rates over time to evaluate whether operational changes improve delivery performance.
+Review how the estimated delivery date is set: check whether it is too optimistic in peak months and too conservative in other periods.
+
+Clarify the meaning of the `unavailable` status with the business before treating it as a cancellation.
