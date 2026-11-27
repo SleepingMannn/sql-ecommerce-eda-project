@@ -20,7 +20,7 @@ SELECT
 FROM gold.report_customers
 WHERE analysis_type = 'Customer Behavior';
 
--- Average order value for new and repeat customers
+-- Purchase value of one-time and repeat customers
 SELECT
 	segment,
 	product_sales_value,
