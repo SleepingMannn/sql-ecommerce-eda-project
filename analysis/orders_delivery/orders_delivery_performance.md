@@ -33,8 +33,6 @@ Of 99,441 orders, 96,478 (97.02%) were delivered, 1,729 (1.74%) are still in pro
 
 Delivered orders with a delivery date (96,470) took 12.50 calendar days on average. 8 delivered orders without a delivery date are excluded. 93.23% (89,936) of these orders arrived on time or early and 6.77% (6,534) arrived late. Late orders were delivered 10.62 days after the estimated date on average.
 
-Among states with at least 500 delivered orders, the late rate was highest in Maranhao (17.43%), Ceara (13.76%), Bahia (12.16%) and Rio de Janeiro (12.11%), and lowest in Parana (4.04%), Sao Paulo (4.49%) and Minas Gerais (4.57%). Rio de Janeiro has 12.8% of delivered orders but 22.88% of late orders; Sao Paulo has 41.98% and 27.85%.
-
 The highest late rates by month and state (at least 30 delivered orders) are Maranhao in 2017-11 (52.83%) and 2018-03 (51.02%), Para (50.75%) and Ceara (50.54%) in 2018-03. In Rio de Janeiro the late rate was 25.99% in 2017-11, 23.99% in 2017-12 and about 34% in 2018-02 and 2018-03.
 
 ### 2.7. Interpretation
