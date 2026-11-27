@@ -39,9 +39,7 @@ The highest late rates by month and state (at least 30 delivered orders) are Mar
 
 Most orders are delivered (97.02%) and 93.23% of delivered orders arrive on time or early, so delays are concentrated in specific periods and regions rather than spread evenly.
 
-Three months hold almost half of all late orders. 2017-11 has the highest order volume in the dataset (7,289 delivered orders). The causes of the 2018-02 and 2018-03 peak cannot be determined from this dataset.
-
-Rio de Janeiro drives the delays in these months (13%-34% late from 2017-11 to 2018-03 versus 4.83% in 2018-04). Late rates are also high in states such as Maranhao and Ceara.
+The eight delivered orders without valid delivery dates were excluded from delivery metrics and should be considered when interpreting the results.
 
 The dataset does not define the status `unavailable`; together with `canceled` it covers 1.24% of orders and is treated as unfulfilled orders.
 
