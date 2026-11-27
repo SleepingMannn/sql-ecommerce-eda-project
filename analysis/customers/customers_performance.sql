@@ -1,10 +1,10 @@
--- Number of unique customers
+-- #1 Number of unique customers
 SELECT
 	SUM(total_customers) AS total_customers
 FROM gold.report_customers
 WHERE analysis_type = 'Customer Behavior';
 
--- Percentage of customers who place repeat orders
+-- #2 Percentage of customers who place repeat orders
 SELECT
 	segment,
 	total_customers,
@@ -13,14 +13,14 @@ SELECT
 FROM gold.report_customers
 WHERE analysis_type = 'Customer Behavior';
 
--- Average number of orders per customer
+-- #3 Average number of orders per customer
 SELECT
 	segment,
 	ROUND(CAST(total_orders AS FLOAT)/ total_customers, 2) AS avg_order
 FROM gold.report_customers
 WHERE analysis_type = 'Customer Behavior';
 
--- Purchase value of one-time and repeat customers
+-- #4 Purchase value of one-time and repeat customers
 SELECT
 	segment,
 	product_sales_value,
@@ -28,7 +28,7 @@ SELECT
 FROM gold.report_customers
 WHERE analysis_type = 'Customer Behavior';
 
--- Geographic distribution of buyers
+-- #5 Geographic distribution of buyers
 SELECT
 	segment,
 	total_customers,
