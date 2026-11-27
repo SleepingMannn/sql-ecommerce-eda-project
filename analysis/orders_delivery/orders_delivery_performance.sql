@@ -60,7 +60,7 @@ FROM (
 				ELSE 0 
 			END) AS total_late_orders
 	FROM gold.report_orders_delivery
-	WHERE order_status = 'delivered'
+	WHERE order_status = 'delivered' AND delivery_delay_days IS NOT NULL
 	GROUP BY YEAR(order_purchase_timestamp), MONTH(order_purchase_timestamp), customer_state
 )t
 WHERE total_delivered_orders >= 30
