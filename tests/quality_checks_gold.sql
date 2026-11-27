@@ -11,12 +11,7 @@ Usage:
 ===============================================================================
 */
 
-USE olist_ecommerce;
-GO
-
--- ====================================================================
--- 1. Keys: unique and not NULL
--- ====================================================================
+-- #1 Keys: unique and not NULL
 -- gold.dim_customers
 SELECT 
     customer_id, 
@@ -67,9 +62,7 @@ FROM gold.fact_order_payments
 GROUP BY order_id, payment_sequential
 HAVING COUNT(*) > 1 OR order_id IS NULL OR payment_sequential IS NULL;
 
--- ====================================================================
--- 2. Connectivity: every fact row finds its parent row
--- ====================================================================
+-- #2 Connectivity: every fact row finds its parent row
 -- gold.fact_order_items → dimensions and fact_orders
 SELECT 
     oi.order_id, 
