@@ -57,7 +57,7 @@ The conventions are designed to keep database objects consistent, traceable to t
 |--------|---------|---------|
 | `dim_` | Dimension view | `gold.dim_customers` |
 | `fact_` | Fact view | `gold.fact_order_items` |
-| `report_` | Aggregated view for a business question | `gold.report_sales_by_month` |
+| `report_` | Aggregated view for a business question | `gold.report_sales` |
 
 - Format: `<prefix>_<entity>`, entity name in plural for dimensions (`dim_products`), descriptive for reports.
 - New (derived) columns, which get descriptive `snake_case` names, with the unit in the name where useful (`delivery_days`).
