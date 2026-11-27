@@ -10,8 +10,8 @@ The project loads 9 CSV files into a Bronze → Silver → Gold warehouse, valid
 
 | Block | Question | Key results |
 |---|---|---|
-| [Sales Performance](analysis/sales/sales_performance.md) | How are sales distributed across product categories? | Product Sales Value is 13.22M (delivered orders). The top 5 categories give 39.83%; health_beauty is first (9.33%). Monthly sales peaked in 2017-11 (987,765, +52.4% vs October). |
-| [Orders & Delivery](analysis/orders_delivery/orders_delivery_performance.md) | How efficiently are orders fulfilled, and where do delivery issues arise? | 97.02% of orders were delivered, 93.23% of them on time; average delivery time is 12.5 days. Three months (2017-11, 2018-02, 2018-03) hold 48.33% of all late orders; Rio de Janeiro drives them. |
+| [Sales Performance](analysis/sales/sales_performance.md) | How are sales distributed across product categories? | Product Sales Value is 13.22M (delivered orders). The top 5 categories give 39.83%; health_beauty is first (9.33%). Monthly sales peaked in 2017-11 (987,765.37). |
+| [Orders & Delivery](analysis/orders_delivery/orders_delivery_performance.md) | How efficiently are orders fulfilled, and where do delivery issues arise? | 97.02% of orders were delivered, 93.23% of them on time; average delivery time is 12.5 days. The highest late rates by month and state are in Maranhao, Para and Ceara in 2017-11 and 2018-03 (up to 52.83%). |
 | [Customer Analysis](analysis/customers/customers_performance.md) | How do customers use the platform and how often do they return? | 97% of customers bought once. Repeat customers are 3% of customers but spend 1.89 times more per customer. Sao Paulo has 41.92% of customers. |
 
 Each analysis file follows the same steps: question, context, metrics, data sources and grain, SQL, findings, interpretation, recommendations. Metric definitions are in [`docs/metric_definitions.md`](docs/metric_definitions.md).
