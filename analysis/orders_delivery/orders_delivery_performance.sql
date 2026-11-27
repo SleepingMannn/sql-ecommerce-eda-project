@@ -39,7 +39,7 @@ SELECT
 	COUNT(order_id) AS total_orders,
 	AVG(CAST(delivery_delay_days AS DECIMAL(10,2))) AS avg_delay_days
 FROM gold.report_orders_delivery
-WHERE delivery_status = 'Late' AND order_status = 'delivered';
+WHERE delivery_status = 'late' AND order_status = 'delivered';
 
 -- Trends in delays by month and state
 SELECT 
@@ -63,6 +63,7 @@ FROM (
 	WHERE order_status = 'delivered'
 	GROUP BY YEAR(order_purchase_timestamp), MONTH(order_purchase_timestamp), customer_state
 )t
+WHERE total_delivered_orders >= 30
 ORDER BY 
 	purchase_year,
 	purchase_month,
