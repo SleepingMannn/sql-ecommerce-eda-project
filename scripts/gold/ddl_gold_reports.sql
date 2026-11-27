@@ -1,15 +1,24 @@
+/*
+Purpose:
+    Creates 3 reporting views for business analysis:
+        - Sales Performance
+        - Orders and Delivery Performance
+        - Customer Performance
+
+Model:
+    Reporting views built on top of the Gold Layer.
+*/
+
 USE olist_ecommerce;
 GO
 
--- =============================================================================
--- Create Report: gold.report_sales
--- =============================================================================
+-- Grain: one row per product category per calendar month.
 IF OBJECT_ID('gold.report_sales', 'V') IS NOT NULL
     DROP VIEW gold.report_sales;
 GO
 
 CREATE VIEW gold.report_sales AS
-WITH base_query AS (
+WITH base_query AS(
     SELECT
         DATEFROMPARTS(YEAR(oi.order_purchase_timestamp), MONTH(oi.order_purchase_timestamp), 1) AS month_start,
         oi.order_id,
@@ -52,16 +61,15 @@ SELECT
     product_sales_value + freight_value AS sales_value_with_freight,
     avg_selling_price
 FROM monthly_category;
+GO
 
--- =============================================================================
--- Create Report: gold.report_orders_delivery
--- =============================================================================
+-- Grain: one row per order.
 IF OBJECT_ID('gold.report_orders_delivery', 'V') IS NOT NULL
     DROP VIEW gold.report_orders_delivery;
 GO
 
 CREATE VIEW gold.report_orders_delivery AS
-WITH base_query AS (
+WITH base_query AS(
     SELECT
     	o.order_id,
     	c.customer_state,
@@ -91,10 +99,11 @@ SELECT
 	delivery_days,
 	delivery_delay_days
 FROM base_query;
+GO
 
--- =============================================================================
--- Create Report: gold.report_customers
--- =============================================================================
+-- Grain:
+--     Customer Behavior: one row per customer segment.
+--     Customer Geography: one row per customer state.
 IF OBJECT_ID('gold.report_customers', 'V') IS NOT NULL
     DROP VIEW gold.report_customers;
 GO
