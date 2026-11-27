@@ -37,9 +37,9 @@ The five leading categories accounted for 39.83% of total Product Sales Value. b
 
 The five largest month-category values are all in 2018; health_beauty holds three of them (June, July, August).
 
-Monthly Product Sales Value grew from 111,798.36 (2017-01) to a peak of 987,765.37 in 2017-11 (+52.4% vs October, fifth consecutive monthly increase), then fell 26.5% in December.
+Monthly Product Sales Value grew from 111,798.36 (2017-01) to a peak of 987,765.37 in 2017-11, then fell 26.5% in December.
 
-In 2018, monthly values stayed between 826,437.13 and 977,545 (May peak); August 2018 is 14.2% below May and 51.2% above August 2017.
+In 2018, monthly values stayed between 826,437.13 and 977,545 (May peak).
 
 ### 1.7. Interpretation
 
