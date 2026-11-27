@@ -20,7 +20,7 @@ further investigation when evaluating assortment development.
 
 ### 1.4. Data Sources & Grain
 
-- Source: gold.report_sales (built from gold.fact_order_items, gold.dim_products).
+- Source: gold.report_sales (built from gold.fact_order_items, gold.dim_products, gold.dim_customers).
 - Analysis includes delivered orders only, 2016-09 to 2018-08.
 - Reporting grain: one row per product category per calendar month.
 - Definitions: `docs/metric_definitions.md`
