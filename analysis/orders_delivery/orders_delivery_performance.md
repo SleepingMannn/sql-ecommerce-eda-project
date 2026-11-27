@@ -45,7 +45,7 @@ The dataset does not define the status `unavailable`; together with `canceled` i
 
 ### 2.8. Recommendations
 
-Study logistics in the peak months (2017-11, 2018-02, 2018-03) and in the states with the highest late rates (Maranhao, Ceara, Rio de Janeiro): compare order volume, delivery time and late rate.
+Study logistics in the periods and states with the highest late rates (e.g. Maranhao, Para, Ceara in 2017-11 and 2018-03): compare order volume, delivery time and late rate.
 
 Compare delivery time by state and by seller state versus customer state to separate distance effects from capacity effects.
 
