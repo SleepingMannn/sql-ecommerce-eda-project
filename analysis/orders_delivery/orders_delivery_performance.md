@@ -58,3 +58,5 @@ Compare delivery time by state and by seller state versus customer state to sepa
 Review how the estimated delivery date is set: check whether it is too optimistic in peak months and too conservative in other periods.
 
 Clarify the meaning of the `unavailable` status with the business before treating it as a cancellation.
+
+Additional data needed: carrier and shipping method, seller location or distance (geolocation is excluded from Gold), and order reviews (available in Silver) to link delays with customer ratings.
