@@ -12,6 +12,7 @@ Definitions used in `analysis/`.
 | Delivery metrics | Delivered orders with a delivery date; calendar days (DATEDIFF) |
 | Sales value | `price` without `freight_value` |
 | Unknown category | Kept as `unknown` |
+| Minimum volume | At least 30 delivered orders per state and month |
 
 ## 2. Sales Performance
 
