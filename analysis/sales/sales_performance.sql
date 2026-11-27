@@ -47,8 +47,8 @@ SELECT
     product_sales_value - LAG(product_sales_value) OVER (ORDER BY month_start) AS sales_diff,
     CASE 
         WHEN LAG(product_sales_value) OVER (ORDER BY month_start) IS NULL THEN 'not_applicable'
-        WHEN product_sales_value - LAG(product_sales_value) OVER (ORDER BY month_start) > 0 THEN 'Increase'
-        WHEN product_sales_value - LAG(product_sales_value) OVER (ORDER BY month_start) < 0 THEN 'Decrease'
+        WHEN product_sales_value - LAG(product_sales_value) OVER (ORDER BY month_start) > 0 THEN 'increase'
+        WHEN product_sales_value - LAG(product_sales_value) OVER (ORDER BY month_start) < 0 THEN 'decrease'
         ELSE 'No Change'
     END AS sales_change
 FROM monthly_sales
