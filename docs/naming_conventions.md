@@ -1,13 +1,9 @@
 # Naming Conventions
 
----
-
 ## 1. Purpose
 
 This document defines the naming conventions and layer-specific data handling rules used in the Olist E-Commerce SQL project.
 The conventions are designed to keep database objects consistent, traceable to the source dataset, and understandable for analytical work.
-
----
 
 ## 2. General Principles
 
@@ -19,8 +15,6 @@ The conventions are designed to keep database objects consistent, traceable to t
 - **Traceability:** bronze and silver keep the names from the source files, so every object can be traced back to its CSV.
 - **Units:** include units in derived column names where useful, for example `delivery_days`, `product_weight_g`, and `product_length_cm`.
 
----
-
 ## 3. Database and Schema Naming
 
 | Object | Name | Purpose |
@@ -29,8 +23,6 @@ The conventions are designed to keep database objects consistent, traceable to t
 | Schema | `bronze` | Source-aligned data ingestion layer |
 | Schema | `silver` | Standardized data layer |
 | Schema | `gold` | Business-ready analytical views |
-
----
 
 ## 4. Layer Rules
 
@@ -60,10 +52,8 @@ The conventions are designed to keep database objects consistent, traceable to t
 | `report_` | Aggregated view for a business question | `gold.report_sales` |
 
 - Format: `<prefix>_<entity>`, entity name in plural for dimensions (`dim_products`), descriptive for reports.
-- New (derived) columns, which get descriptive `snake_case` names, with the unit in the name where useful (`delivery_days`).
-- The final list of gold views is defined after data profiling and is documented in the data catalog.
-
----
+- Derived columns use descriptive snake_case names, with the unit where useful (`delivery_days`).
+- `report_*` views are added for the business questions in `analysis/`.
 
 ## 5. SQL Script Naming and Organization
 
@@ -79,6 +69,6 @@ SQL scripts are organized by layer and operation.
 | `scripts/gold/ddl_gold.sql` | Creates Gold dimension and fact views |
 | `scripts/gold/ddl_gold_reports.sql` | Creates Gold report views |
 | `tests/quality_checks_silver.sql`, `tests/quality_checks_gold.sql` | Data quality checks per layer |
-| `analysis/<block>/<block>.sql` | EDA queries: metrics, sources, SQL |
-| `analysis/<block>/<block>.md` | Business question, findings and recommendations |
+| `analysis/<block>/<block>_performance.sql` | EDA queries: metrics, sources, SQL |
+| `analysis/<block>/<block>_performance.md` | Business question, findings and recommendations |
 | `docs/metric_definitions.md` | Metric definitions and analysis rules |
