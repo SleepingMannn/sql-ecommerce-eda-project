@@ -167,7 +167,7 @@ Report views are built on top of the dimension and fact views and are not part o
 | total_quantity | Number of order items |
 | product_sales_value | Sum of item prices, excluding freight |
 | freight_value | Sum of freight values |
-| total_order_value | Product sales value plus freight for the month and category |
+| sales_value_with_freight | Product sales value plus freight for the month and category |
 | avg_selling_price | Average item price; recalculate as value / quantity when aggregating |
 
 ### gold.report_orders_delivery
@@ -182,7 +182,7 @@ Report views are built on top of the dimension and fact views and are not part o
 | order_id | Unique order identifier |
 | customer_state | Customer (delivery) state |
 | order_status | Order status in the source |
-| delivery_status | `Late`, `On-time`, `not_applicable` (not delivered) or `unknown` (no delivery date) |
+| delivery_status | `late`, `on-time`, `not_applicable` (not delivered) or `unknown` (no delivery date) |
 | order_purchase_timestamp | Order purchase timestamp |
 | order_delivered_customer_date | Actual customer delivery timestamp |
 | order_estimated_delivery_date | Estimated delivery date |
@@ -205,4 +205,4 @@ Report views are built on top of the dimension and fact views and are not part o
 | total_items | Number of order items |
 | product_sales_value | Sum of item prices, excluding freight |
 | total_freight | Sum of freight values |
-| total_order_value | Product sales value plus freight |
+| sales_value_with_freight | Product sales value plus freight |
