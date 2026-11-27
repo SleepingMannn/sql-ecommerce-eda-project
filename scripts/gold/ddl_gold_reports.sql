@@ -49,7 +49,7 @@ SELECT
     total_quantity,
     product_sales_value,
     freight_value,
-    product_sales_value + freight_value AS sales_value_with_freight
+    product_sales_value + freight_value AS sales_value_with_freight,
     avg_selling_price
 FROM monthly_category;
 
@@ -108,7 +108,7 @@ WITH base_query AS(
 		o.total_items,
 		o.total_price,
 		o.total_freight,
-		o.sales_value_with_freight
+		o.total_order_value AS sales_value_with_freight
 	FROM gold.fact_orders o
 	LEFT JOIN gold.dim_customers c
 		ON o.customer_id = c.customer_id
